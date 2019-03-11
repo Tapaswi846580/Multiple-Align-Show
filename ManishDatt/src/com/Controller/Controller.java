@@ -1,6 +1,8 @@
 package com.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +28,7 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		requestHandler(request, response);
 	}
 
 	/**
@@ -34,7 +36,25 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		requestHandler(request, response);
 	}
+	
+	protected void requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try{
+			String data = request.getParameter("txtData");
+			String[] splittedData = data.split("\n");
+			ArrayList<String> headings = new ArrayList<>();
+			
+			for(int i=0; i<splittedData.length; i++){
+				if(splittedData[i].startsWith(">")){
+					headings.add(splittedData[i]);
+				}
+			}
+			System.out.println(headings);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 
 }
