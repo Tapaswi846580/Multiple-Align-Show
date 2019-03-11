@@ -20,7 +20,7 @@
 <body>
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
+    <div class="bg-dark">
  <div class="card1">
 	<div class="card-body">
        <p class="card-text">
