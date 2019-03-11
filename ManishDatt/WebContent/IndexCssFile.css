@@ -96,3 +96,9 @@ body{
   background-color: black;
   color:white;
 }
+
+
+.container{
+	overflow-y: auto;
+}
+
