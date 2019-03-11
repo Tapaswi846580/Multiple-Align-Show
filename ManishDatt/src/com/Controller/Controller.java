@@ -3,6 +3,7 @@ package com.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,16 +57,13 @@ public class Controller extends HttpServlet {
 				}
 			}
 			
-			System.out.println("Headings");
-			for(String s : headings)
-				System.out.println(s);
+			System.out.println(sequences.get(0));
+			request.setAttribute("headings",headings);
+			request.setAttribute("sequences",sequences);
+			RequestDispatcher rd = request.getRequestDispatcher("Output.jsp");
+			rd.forward(request, response);
 			
 			
-			System.out.println("\nSequences");
-			
-			for(StringBuilder sqs : sequences){
-				System.out.println(sqs.toString());
-			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
