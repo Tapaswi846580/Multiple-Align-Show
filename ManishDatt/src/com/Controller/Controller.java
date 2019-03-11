@@ -54,7 +54,8 @@ public class Controller extends HttpServlet {
 					sequences.add(sequence);
 				}else{
 					sequence.append(splittedData[i]);
-				}
+				}  
+			
 			}
 			
 			System.out.println(sequences.get(0));
