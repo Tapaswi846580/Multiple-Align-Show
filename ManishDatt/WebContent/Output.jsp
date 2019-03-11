@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1>This is output page</h1>
-<div class="container">
+<div class="containe">
 
 </div>
 </body>
