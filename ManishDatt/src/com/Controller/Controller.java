@@ -44,13 +44,28 @@ public class Controller extends HttpServlet {
 			String data = request.getParameter("txtData");
 			String[] splittedData = data.split("\n");
 			ArrayList<String> headings = new ArrayList<>();
-			
+			StringBuilder sequence = new StringBuilder();
+			ArrayList<StringBuilder> sequences = new ArrayList<>();
 			for(int i=0; i<splittedData.length; i++){
 				if(splittedData[i].startsWith(">")){
+					sequence = new StringBuilder();
 					headings.add(splittedData[i]);
+					sequences.add(sequence);
+				}else{
+					sequence.append(splittedData[i]);
 				}
 			}
-			System.out.println(headings);
+			
+//			System.out.println("Headings");
+//			for(String h : headings){
+//				System.out.println(h);
+//			}
+			
+			System.out.println("\nSequences");
+			
+			for(StringBuilder sqs : sequences){
+				System.out.println(sqs.toString());
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
