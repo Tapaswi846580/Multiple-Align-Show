@@ -15,8 +15,8 @@
   <script src="jscolor.js"></script>
 </head>
 <body>
-<h1>This is output page</h1>
-<div class="containe">
+<h1>This is output</h1>
+<div class="container">
 
 </div>
 </body>
