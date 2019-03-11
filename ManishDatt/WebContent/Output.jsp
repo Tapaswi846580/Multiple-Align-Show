@@ -31,7 +31,7 @@
 		<%
 		
 		int flag = 0;
-		int x=20;
+		int x=30;
 		
 		char[] arr = sequences.get(0).toString().replaceAll("\\s","").toCharArray();
 		char[][] a = new char[arr.length/x][x];
