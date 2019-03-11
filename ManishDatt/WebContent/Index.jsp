@@ -75,7 +75,7 @@ VDDE--</textarea>
        <p class="card-text">
        		<div class="slidecontainer">
   					<p>Show residues per line
-  					<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  					<input type="range" min="10" max="100" value="50"step="10" class="slider" id="myRange">
   					<output id="demo" class="out"></output></p>
 			</div>
 			<div class="slidecontainer">
