@@ -3,6 +3,7 @@ package com.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,13 +45,29 @@ public class Controller extends HttpServlet {
 			String data = request.getParameter("txtData");
 			String[] splittedData = data.split("\n");
 			ArrayList<String> headings = new ArrayList<>();
-			
+			StringBuilder sequence = new StringBuilder();
+			ArrayList<StringBuilder> sequences = new ArrayList<>();
 			for(int i=0; i<splittedData.length; i++){
 				if(splittedData[i].startsWith(">")){
+					sequence = new StringBuilder();
+					splittedData[i]=splittedData[i].substring(0);
 					headings.add(splittedData[i]);
-				}
+					sequences.add(sequence);
+				}else{
+					sequence.append(splittedData[i]);
+				}  
+			
 			}
-			System.out.println(headings);
+			
+			int rowrange=Integer.parseInt(request.getParameter("rowrange").toString());
+			
+			request.setAttribute("headings",headings);
+			request.setAttribute("sequences",sequences);
+			request.setAttribute("rowrange", rowrange);
+			RequestDispatcher rd = request.getRequestDispatcher("Output.jsp");
+			rd.forward(request, response);
+			
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
