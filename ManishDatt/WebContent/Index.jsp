@@ -67,7 +67,7 @@ ISNQAETCQRDIEVGDYLVILACDGISDVFNTSDLYNLVQAYVNENPVEE
 YNDLAHYICHEAIAHGSTDNVTVVIGFLRPPQDLWRMMKIDEESDEEEDE
 VDDE--</textarea>
     		<div class="col-md-12 text-center"> 
-    			<button class="btn"><i class="fa fa-home"></i>SUBMIT</button>
+    			<button class="btn"><i class="fa fa-check"></i>SUBMIT</button>
     			<button class="btn"><i class="fa fa-eraser"></i>CLEAR</button>
     		</div>
 <div class="card1">
