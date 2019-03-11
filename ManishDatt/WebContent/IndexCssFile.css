@@ -1,0 +1,98 @@
+@charset "ISO-8859-1";
+.big-image{
+	background-image: url('../Images/1.jpg');
+	background-size: cover;
+}
+body{
+		margin-top: 20px;
+		padding: 0;
+		background-color: #b5a397;
+	}
+	h1{
+		text-align: center;
+	}
+	textarea{
+    	height: 150px;
+    	 
+	}
+	p{
+	margin-top:20px;
+		text-align: center;
+		font-weight: bold;
+	}
+.out{
+ width: 30px;
+ height: 25px; 
+ background-color: #000;
+ color:#fff;
+ border-radius: 30%;
+ text-align: center; 
+}	
+	
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 20%;
+  height: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  text-align: center;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}	
+	
+
+.jscolor
+{
+	border-radius: 10px;
+	box-shadow: none;
+	border-color:#fff; 
+}
+
+.card1{
+	margin-top:20px;
+	background-color: transparent;
+	border: 1px solid white;
+}
+
+.btn {
+	margin-top:20px;
+  background-color: white;
+  border: none;
+  color: Green;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border:1px solid; 
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: black;
+  color:white;
+}
