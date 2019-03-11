@@ -19,45 +19,100 @@
 <h1>This is output page</h1>
 <div class="">
 	<%
+		char[] arr;
+		int x=Integer.parseInt(request.getAttribute("rowrange").toString());
+		int r=0;
+		int cnt=0,cnt1=0;
 		ArrayList<String> headings = (ArrayList<String>)request.getAttribute("headings");
 		ArrayList<StringBuilder> sequences = (ArrayList<StringBuilder>)request.getAttribute("sequences"); 
+		ArrayList al=new ArrayList<>();
+		
+		
+		
 		
 		for(StringBuilder str :sequences){
 			str.toString().replaceAll("\\s","");
 		}
 	%>
 	
+	
+	
 	<table  style="text-align: center;">
+	
 		<%
+		for(int m=0; m<sequences.size(); m++){
 		
 		int flag = 0;
-		int x=30;
 		
-		char[] arr = sequences.get(0).toString().replaceAll("\\s","").toCharArray();
-		char[][] a = new char[arr.length/x][x];
-		for(int j=0; j<arr.length/x; j++){
+		
+		arr = sequences.get(m).toString().replaceAll("\\s","").toCharArray();
+		
+	
+		double d= Double.parseDouble(""+arr.length)/Double.parseDouble(""+x);
+		System.out.println(d);
+		r=(int)Math.ceil(d);
+		System.out.println(r);
+
+		char[][] a = new char[r][x];
+		
+		for(int j=0; j<r; j++){
 					for(int k=0; k<x; k++){
+						if(flag<arr.length){
 						if(!Character.isWhitespace(arr[flag])){
 						a[j][k] = arr[flag];
 						}
 						flag++;
+						}
 				}
 			}
+		
+		al.add(a);
+		}
 			
 		%>
 		
-		<%for(int i=0;i<arr.length/x;i++){ %>
+		
+		
+		
+		<%
+		for(int m=0 ;m<r ;m++){
+			
+			for(int n=0; n<sequences.size(); n++){
+				
+				char [][] temp=(char[][])al.get(n);
+				
+				
+			%>
+				
+				<tr>
+				<td>
+				<%=headings.get(n).toString() %>
+				</td>
+				<td>&nbsp;&nbsp;</td>
+				
+				<%for(int z=0; z<x; z++){ %>
+					<td><%=temp[cnt][z] %></td>
+				<%
+				
+				} %>
+				
+				
+				</tr>
+				
+		
+		
+		<%
+		
+			}%>
 			<tr>
-			<%for(int j=0; j<x; j++){ %>
-			
-			<td>
-			<%=a[i][j] %>
-			<%//System.out.println(a[i][j]); %>
-			</td>
-			<%} %>
-			
-			</tr>
-		<%} %>
+				<td>&nbsp;</td>
+				</tr>
+		<%
+		
+		cnt++;
+		
+		}
+		 %>
 	</table>
 	
 </div>

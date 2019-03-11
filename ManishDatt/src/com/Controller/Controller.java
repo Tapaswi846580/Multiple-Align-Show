@@ -50,6 +50,7 @@ public class Controller extends HttpServlet {
 			for(int i=0; i<splittedData.length; i++){
 				if(splittedData[i].startsWith(">")){
 					sequence = new StringBuilder();
+					splittedData[i]=splittedData[i].substring(0);
 					headings.add(splittedData[i]);
 					sequences.add(sequence);
 				}else{
@@ -58,9 +59,11 @@ public class Controller extends HttpServlet {
 			
 			}
 			
-			System.out.println(sequences.get(0));
+			int rowrange=Integer.parseInt(request.getParameter("rowrange").toString());
+			
 			request.setAttribute("headings",headings);
 			request.setAttribute("sequences",sequences);
+			request.setAttribute("rowrange", rowrange);
 			RequestDispatcher rd = request.getRequestDispatcher("Output.jsp");
 			rd.forward(request, response);
 			
