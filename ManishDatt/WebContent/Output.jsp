@@ -18,7 +18,9 @@
 </style>
 </head>
 <body>
-<div class="pos-f-t">
+<div >
+<div class="container col-md-12">
+<div class="pos-f-t ">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark">
  <div class="card1">
@@ -56,7 +58,8 @@
     </button>
   </nav>
 </div>
-<div class="container">
+</div>
+<div class="container col-md-12">
 -PHSIPIRFRHQPVAGPAHDVFGDAVHSIFQKIMSRGVNADYSHWMSYWI
 ALGIDKKT-QMNYHMKPFCKDTYATEGSLEAKQTFTDKIRSAVEEIIWKS
 AEYCDILSEKWTGIHVSADQLKGQRNKQEDRFVAYPNGQYMNRGQ-SDIS
