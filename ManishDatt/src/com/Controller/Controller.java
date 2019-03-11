@@ -56,10 +56,10 @@ public class Controller extends HttpServlet {
 				}
 			}
 			
-//			System.out.println("Headings");
-//			for(String h : headings){
-//				System.out.println(h);
-//			}
+			System.out.println("Headings");
+			for(String s : headings)
+				System.out.println(s);
+			
 			
 			System.out.println("\nSequences");
 			
