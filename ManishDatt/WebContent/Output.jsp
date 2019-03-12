@@ -79,10 +79,7 @@
 					arr = sequences.get(m).toString().replaceAll("\\s", "").toCharArray();
 
 					double d = Double.parseDouble("" + arr.length) / Double.parseDouble("" + x);
-					System.out.println(d);
 					r = (int) Math.ceil(d);
-					System.out.println(r);
-
 					char[][] a = new char[r][x];
 
 					for (int j = 0; j < r; j++) {
@@ -95,7 +92,6 @@
 							}
 						}
 					}
-
 					al.add(a);
 				}
 			%>

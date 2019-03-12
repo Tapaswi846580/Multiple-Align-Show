@@ -50,7 +50,7 @@ public class Controller extends HttpServlet {
 			for(int i=0; i<splittedData.length; i++){
 				if(splittedData[i].startsWith(">")){
 					sequence = new StringBuilder();
-					splittedData[i]=splittedData[i].substring(0);
+					splittedData[i]=splittedData[i].replace(">","");
 					headings.add(splittedData[i]);
 					sequences.add(sequence);
 				}else{
