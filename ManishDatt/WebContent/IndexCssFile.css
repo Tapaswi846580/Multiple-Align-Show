@@ -6,10 +6,8 @@
 body{
 		margin-top: 20px;
 		padding: 0;
-<<<<<<< HEAD
 		/*  background-color: #b5a397;*/
-=======
->>>>>>> branch 'master' of https://github.com/Tapaswi846580/Multiple-Align-Show.git
+
 		background-color: white;
 	}
 	h1{
@@ -19,11 +17,17 @@ body{
     	height: 150px;
     	 
 	}
-	p{
+/* 	p{
 	margin-top:20px;
 		text-align: center;
 		font-weight: bold;
+	} */
+	
+	p{
+	margin-top:20px;
+		text-align: center;
 	}
+	
 .out{
  width: 30px;
  height: 25px; 
@@ -41,9 +45,9 @@ body{
   -webkit-appearance: none;
   width: 20%;
   height: 5px;
-  background: #d3d3d3;
+  background: #000000;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.9;
   -webkit-transition: .2s;
   transition: opacity .2s;
   text-align: center;
@@ -81,6 +85,11 @@ body{
 .card1{
 	margin-top:20px;
 	background-color: transparent;
+	border: 1px solid white;
+}
+.card2{
+	margin-top:20px;
+	background-color: #DCDCDC;
 	border: 1px solid white;
 }
 

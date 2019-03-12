@@ -10,24 +10,49 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="IndexCssFile.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="jscolor.js"></script>
 </head>
 <body>
 
-<div class="container col-md-12">
-<div class="container col-md-12">
-  <h2>Simple Collapsible</h2>
-  <p>Click on the button to toggle between showing and hiding content.</p>
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-  <div id="demo" class="collapse">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </div>
+<div class="container-fluid">
+<div id="demo" class="collapse">
+    <div class="card2">
+		<div class="card-body">
+       		<p class="card-text">
+       		<div class="slidecontainer">
+  					<p>Show residues per line
+  					<input type="range" min="10" max="100" value="50" name="rowrange" step="10" class="slider" id="myRange3">
+  					<output id="demo3" class="out"></output></p>
+			</div>
+			<div class="slidecontainer">
+  					<p>Select Font Size:
+  					<input type="range" min="8" max="72" value="16" step="2" class="slider" id="myRange4">
+  					<output id="demo4" class="out"></output> </p>
+			</div>
+					
+					<p>Color identical amino acids <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
+					<p>and similar amino acids <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
+					<div class="slidecontainer">
+  					<p>Percentage of sequences that must agree for identity or similarity coloring to be added:  
+  					<input type="range" min="10" max="100" value="50" step="10" class="slider" id="myRange5">
+  					<output id="demo5" class="out"></output> </p>
+					</div>
+					<p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
+					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
+					
+			</p>
+		</div>
+	</div>
+ </div>
+ <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" title="for Edit" data-placement="top"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+  
 </div>
 
 
-	 <h1>This is output page</h1>
-	<div class="container col-md-8">
+	 <h1></h1>
+	
 		<%
 			char[] arr;
 			int x = Integer.parseInt(request.getAttribute("rowrange").toString());
@@ -43,7 +68,7 @@
 		%>
 
 
-
+<div class="table-responsive">
 		<table style="text-align: center;">
 
 			<%
@@ -114,7 +139,36 @@
 		</table>
 
 	</div>
-	</div>
-
 </body>
+<script>
+var slider = document.getElementById("myRange3");
+var output = document.getElementById("demo3");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
+var slider1 = document.getElementById("myRange4");
+var output1 = document.getElementById("demo4");
+output1.innerHTML = slider1.value;
+
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+
+var slider2 = document.getElementById("myRange5");
+var output2 = document.getElementById("demo5");
+output2.innerHTML = slider2.value;
+
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+
+
+function setTextColor(picker) {
+	document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+}
+</script>
 </html>

@@ -30,7 +30,7 @@
 </div>
    		
 <p>Paste the aligned sequences in FASTA or GDE format into the text area below. </p>
-		    <textarea class="form-control" rows="7" name="txtData" placeholder="Enter Amino acid Sequence here...">>CremaneiFEM-2
+		    <textarea class="form-control" rows="7" name="txtData" id="Data" placeholder="Enter Amino acid Sequence here...">>CremaneiFEM-2
 -------------------MSDSLNHPSSSTVHADDGFEPPTSPEDNNKK
 PSLEQIKQEREALFTDLFADRRRSARSVIEEAFQNELMSAEPVQPNVPN-
 -PHSIPIRFRHQPVAGPAHDVFGDAVHSIFQKIMSRGVNADYSHWMSYWI
@@ -68,7 +68,8 @@ YNDLAHYICHEAIAHGSTDNVTVVIGFLRPPQDLWRMMKIDEESDEEEDE
 VDDE--</textarea>
     		<div class="col-md-12 text-center"> 
     			<button class="btn"><i class="fa fa-check"></i>SUBMIT</button>
-    			<button class="btn"><i class="fa fa-eraser"></i>CLEAR</button>
+    			
+    			<button class="btn" type="button"  onclick="document.getElementById('Data').value=''"><i class="fa fa-eraser"></i>CLEAR</button>
     		</div>
 <div class="card1">
 	<div class="card-body">
@@ -77,8 +78,6 @@ VDDE--</textarea>
   					<p>Show residues per line
 
   					<input type="range" min="10" max="100" value="50" name="rowrange" step="10" class="slider" id="myRange">
-
-  			
 
   					<output id="demo" class="out"></output></p>
 			</div>
@@ -144,6 +143,8 @@ slider2.oninput = function() {
 function setTextColor(picker) {
 	document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
 }
+
+
 </script>
 
 </html>
