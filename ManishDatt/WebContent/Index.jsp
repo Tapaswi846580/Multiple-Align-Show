@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
-	<title>JAVA</title>
+	<title>Multiple Align Show</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -14,23 +13,35 @@
   <link rel="stylesheet" href="IndexCssFile.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="jscolor.js"></script>
+ 
+  <script>
+  $(document).ready(function(){
+	    $("#x").fadeIn(1500);
+	    $("#y").fadeIn(2000);
+		
+	});
+  </script>
 </head>
 
 
 <body>
-<form action="Controller" method="POST">
-<div class="container">
-<div class="card">
-<div class="view" style="background-image: url('ManishDatt/Images/background.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-      <div class="card-body">
-        <h1 class="card-title">Multiple Align Show</h1>
-        <p class="card-texts">Multiple Align Show accepts a group of aligned sequences (in FASTA or GDE format) and formats the alignment to your specifications. You can specify the number of residues per line, and the font size and font style. You can also set a consensus level, which specifies the fraction of residues that need to be identical or similar in a column of the alignment for highlighting to be added. Use Multiple Align Show to enhance the output of sequence alignment programs.</p>
-      </div>
-      </div>	
+
+<div class="col-md-12 div1">
+
+        <h1 id="x" style="display:none">Multiple Align Show</h1>
+        <p id="y" style="display:none">Multiple Align Show accepts a group of aligned sequences (in FASTA or GDE format) and formats the alignment to your specifications. You can specify the number of residues per line, and the font size and font style. You can also set a consensus level, which specifies the fraction of residues that need to be identical or similar in a column of the alignment for highlighting to be added. Use Multiple Align Show to enhance the output of sequence alignment programs.</p>
+      
 </div>
+
+<form action="Controller" method="POST">
+<div class="col-md-12 div2">
+
+
+
    		
-<p>Paste the aligned sequences in FASTA or GDE format into the text area below. </p>
-		    <textarea class="form-control" rows="7" name="txtData" id="Data" placeholder="Enter Amino acid Sequence here...">>CremaneiFEM-2
+<b>Paste the aligned sequences in FASTA or GDE format into the text area below. </b>
+		    <textarea class="form-control " rows="7" name="txtData" id="Data" placeholder="Enter Amino acid Sequence here...">
+>CremaneiFEM-2
 -------------------MSDSLNHPSSSTVHADDGFEPPTSPEDNNKK
 PSLEQIKQEREALFTDLFADRRRSARSVIEEAFQNELMSAEPVQPNVPN-
 -PHSIPIRFRHQPVAGPAHDVFGDAVHSIFQKIMSRGVNADYSHWMSYWI
@@ -71,6 +82,11 @@ VDDE--</textarea>
     			
     			<button class="btn" type="button"  onclick="document.getElementById('Data').value=''"><i class="fa fa-eraser"></i>CLEAR</button>
     		</div>
+    		
+</div>	
+
+
+<div class="col-md-12 div3">		
 <div class="card1">
 	<div class="card-body">
        <p class="card-text">
@@ -83,26 +99,29 @@ VDDE--</textarea>
 			</div>
 			<div class="slidecontainer">
   					<p>Select Font Size:
-  					<input type="range" min="8" max="72" value="16" step="2" class="slider" id="myRange1">
+  					<input type="range" min="8" max="72" value="16" step="2" name="rowfsize" class="slider" id="myRange1">
   					<output id="demo1" class="out"></output> </p>
 			</div>
 					<p>Choose the colors you wish to use for highlighting. Identical amino acids have the highest priority for coloring, followed by similar amino acids. </p>
-					<p>Color identical amino acids <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;">
-					and similar amino acids <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
-					<div class="slidecontainer">
+					<p>Color identical amino acids <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;">
+					and similar amino acids <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
+					<!--<div class="slidecontainer">
   					<p>Percentage of sequences that must agree for identity or similarity coloring to be added:  
   					<input type="range" min="10" max="100" value="50" step="10" class="slider" id="myRange2">
   					<output id="demo2" class="out"></output> </p>
 					</div>
-					<p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
-					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
+					 <p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
+					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p> -->
 					
 			</p>
+	</div>
 </div>
 </div>
+
+</form>
   			
-</div>
-		</form>
+<!-- </div> -->
+		<p></p>
 	<footer class="page-footer font-small blue">
 
   <!-- Copyright -->
@@ -146,5 +165,6 @@ function setTextColor(picker) {
 
 
 </script>
+
 
 </html>

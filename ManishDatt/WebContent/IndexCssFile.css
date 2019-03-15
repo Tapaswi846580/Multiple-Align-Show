@@ -1,19 +1,29 @@
 @charset "ISO-8859-1";
-.big-image{
-	background-image: url('../Images/1.jpg');
-	background-size: cover;
-}
 body{
-		margin-top: 20px;
+		
 		padding: 0;
 		/*  background-color: #b5a397;*/
-
-		background-color: white;
+		background-color: #ffffff;
+		
 	}
+	.div1{
+	 background-color:#ffffff; 
+	/* E9C92D */
+	padding-bottom: 10px;
+
+	}
+	
+	.div3{
+	 background-color:#ffffff; 
+
+	}
+	
+	
 	h1{
 		text-align: center;
 	}
 	textarea{
+	
     	height: 150px;
     	 
 	}
@@ -26,13 +36,17 @@ body{
 	p{
 	margin-top:20px;
 		text-align: center;
+		color:#000000;
 	}
+.container{
+	max-width: 100%;
 	
+}
 .out{
  width: 30px;
  height: 25px; 
- background-color: #000;
- color:#fff;
+ background-color: #000000;
+ color:#ffffff;
  border-radius: 30%;
  text-align: center; 
 }	
@@ -81,16 +95,20 @@ body{
 	box-shadow: none;
 	border-color:#fff; 
 }
-
+.card{
+	background-color: #ffddc0;
+	border: 0px;
+}
 .card1{
 	margin-top:20px;
 	background-color: transparent;
-	border: 1px solid white;
+	
 }
 .card2{
 	margin-top:20px;
-	background-color: #DCDCDC;
-	border: 1px solid white;
+	 background-color: #ffffff;
+	border: 1px solid white; 
+	
 }
 
 .btn {
@@ -104,13 +122,8 @@ body{
   border:1px solid; 
 }
 
-/* Darker background on mouse-over */
+
 .btn:hover {
   background-color: black;
   color:white;
-}
-
-
-
-
-
+} 

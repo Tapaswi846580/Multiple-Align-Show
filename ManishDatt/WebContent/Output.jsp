@@ -32,15 +32,15 @@
   					<output id="demo4" class="out"></output> </p>
 			</div>
 					
-					<p>Color identical amino acids <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
-					<p>and similar amino acids <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
-					<div class="slidecontainer">
+					<p>Color identical amino acids <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;">
+					and similar amino acids <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
+					<!--<div class="slidecontainer">
   					<p>Percentage of sequences that must agree for identity or similarity coloring to be added:  
   					<input type="range" min="10" max="100" value="50" step="10" class="slider" id="myRange5">
   					<output id="demo5" class="out"></output> </p>
 					</div>
-					<p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
-					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'66ccff'}" style="width:60px; height:30px;border-radius: 10px;padding:15px;"></p>
+					 <p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
+					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p> -->
 					
 			</p>
 		</div>
@@ -50,7 +50,7 @@
   
 </div>
 
-
+<p></p>
 	 <h1></h1>
 	
 		<%
@@ -79,7 +79,10 @@
 					arr = sequences.get(m).toString().replaceAll("\\s", "").toCharArray();
 
 					double d = Double.parseDouble("" + arr.length) / Double.parseDouble("" + x);
+					System.out.println(d);
 					r = (int) Math.ceil(d);
+					System.out.println(r);
+
 					char[][] a = new char[r][x];
 
 					for (int j = 0; j < r; j++) {
@@ -92,6 +95,7 @@
 							}
 						}
 					}
+
 					al.add(a);
 				}
 			%>
