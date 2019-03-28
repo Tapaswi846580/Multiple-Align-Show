@@ -21,6 +21,20 @@
 		
 	});
   </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+      function selectColour() {
+      	alert("hello");
+              var col1 = $('#colourPicker1').val();
+              alert(col1);
+              $.get('ColourPicker', {
+                      colour1 : col1
+              });
+      };
+});
+  </script>
 </head>
 
 
@@ -103,7 +117,7 @@ VDDE--</textarea>
   					<output id="demo1" class="out"></output> </p>
 			</div>
 					<p>Choose the colors you wish to use for highlighting. Identical amino acids have the highest priority for coloring, followed by similar amino acids. </p>
-					<p>Color identical amino acids <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;">
+					<p>Color identical amino acids <input type="button" id="colourPicker1" class="jscolor{value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;" onselect=setTextColor()>
 					and similar amino acids <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
 					<!--<div class="slidecontainer">
   					<p>Percentage of sequences that must agree for identity or similarity coloring to be added:  
@@ -159,12 +173,20 @@ slider2.oninput = function() {
   output2.innerHTML = this.value;
 }
 
+
 function setTextColor(picker) {
-	document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+	//document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+	selectColour();
 }
 
 
+
+
+
+
 </script>
+
+
 
 
 </html>

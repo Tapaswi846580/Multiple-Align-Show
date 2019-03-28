@@ -1255,6 +1255,8 @@ var jsc = {
 
 
 		this.toHEXString = function () {
+		
+			
 			return '#' + this.toString().toUpperCase();
 		};
 
@@ -1847,6 +1849,7 @@ jsc.jscolor.installByClassName = function (className) {
 
 
 jsc.register();
+
 
 
 return jsc.jscolor;

@@ -9,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import com.Model.ColourSqu;
 
 /**
  * Servlet implementation class Controller
@@ -41,6 +45,10 @@ public class Controller extends HttpServlet {
 	}
 	
 	protected void requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession hs=request.getSession();
+		hs.setAttribute("colour", "#42dff4");
+		
 		try{
 			String data = request.getParameter("txtData");
 			String[] splittedData = data.split("\n");
@@ -53,13 +61,23 @@ public class Controller extends HttpServlet {
 					splittedData[i]=splittedData[i].replace(">","");
 					headings.add(splittedData[i]);
 					sequences.add(sequence);
-				}else{
+				}
+				else if(splittedData[i].startsWith("%")) {
+					sequence = new StringBuilder();
+					splittedData[i]=splittedData[i].replace("%","");
+					headings.add(splittedData[i]);
+					sequences.add(sequence);
+				}
+				else{
 					sequence.append(splittedData[i]);
 				}  
 			
 			}
 			
 			int rowrange=Integer.parseInt(request.getParameter("rowrange").toString());
+			
+			ColourSqu cs=new ColourSqu();
+			cs.colourDeco(headings, sequences, rowrange);
 			
 			request.setAttribute("headings",headings);
 			request.setAttribute("sequences",sequences);

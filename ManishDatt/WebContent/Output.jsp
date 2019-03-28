@@ -16,6 +16,10 @@
 </head>
 <body>
 
+<%
+HttpSession hs=request.getSession();
+String colour=hs.getAttribute("colour").toString(); %>
+
 <div class="container-fluid">
 <div id="demo" class="collapse">
     <div class="card2">
@@ -79,9 +83,9 @@
 					arr = sequences.get(m).toString().replaceAll("\\s", "").toCharArray();
 
 					double d = Double.parseDouble("" + arr.length) / Double.parseDouble("" + x);
-					System.out.println(d);
+					//System.out.println(d);
 					r = (int) Math.ceil(d);
-					System.out.println(r);
+					
 
 					char[][] a = new char[r][x];
 
@@ -129,7 +133,7 @@
 				}
 			%>
 			<tr>
-				<td>&nbsp;</td>
+				<td style="background-color: <%=colour%>">&nbsp;</td>
 			</tr>
 			<%
 				cnt++;
