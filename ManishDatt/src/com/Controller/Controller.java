@@ -76,11 +76,20 @@ public class Controller extends HttpServlet {
 			
 			int rowrange=Integer.parseInt(request.getParameter("rowrange").toString());
 			
-			ColourSqu cs=new ColourSqu();
-			cs.colourDeco(headings, sequences, rowrange);
+			String FirstColour="#"+request.getParameter("firstcolor");
+			String SecondColour="#"+request.getParameter("secondcolor");
 			
+			//System.out.println(FirstColour);
+			
+			ColourSqu cs=new ColourSqu();
+			ArrayList al=cs.colourDeco(headings, sequences, rowrange,FirstColour,SecondColour);
+			String[][] finalSeq=(String[][]) al.get(0);
+			String[] finalCol=(String[]) al.get(1);
+			
+			
+			request.setAttribute("finalCol",finalCol);
 			request.setAttribute("headings",headings);
-			request.setAttribute("sequences",sequences);
+			request.setAttribute("sequences",finalSeq);
 			request.setAttribute("rowrange", rowrange);
 			RequestDispatcher rd = request.getRequestDispatcher("Output.jsp");
 			rd.forward(request, response);

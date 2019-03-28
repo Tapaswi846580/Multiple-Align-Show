@@ -13,6 +13,15 @@
    <link rel="stylesheet" href="IndexCssFile.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="jscolor.js"></script>
+  
+  <style type="text/css">
+  
+  .tdcolour{
+  	color: #ffffff;
+  }
+  
+  
+  </style>
 </head>
 <body>
 
@@ -58,7 +67,7 @@ String colour=hs.getAttribute("colour").toString(); %>
 	 <h1></h1>
 	
 		<%
-			char[] arr;
+			/* char[] arr;
 			int x = Integer.parseInt(request.getAttribute("rowrange").toString());
 			int r = 0;
 			int cnt = 0, cnt1 = 0;
@@ -68,12 +77,29 @@ String colour=hs.getAttribute("colour").toString(); %>
 
 			for (StringBuilder str : sequences) {
 				str.toString().replaceAll("\\s", "");
-			}
+			} */
+		%>
+		
+		<%
+		ArrayList<String> headings = (ArrayList<String>) request.getAttribute("headings");
+		String[][] finalSeq=(String[][])request.getAttribute("sequences");
+		int rowrange = Integer.parseInt(request.getAttribute("rowrange").toString());
+		int cnt=0;
+		int row=headings.size();
+		double d = Double.parseDouble("" + finalSeq[0].length) / Double.parseDouble("" + rowrange);
+		/* System.out.println(finalSeq[0].length);
+		System.out.println(d); */
+		int r = (int) Math.ceil(d);
+		int col=rowrange;
+		int colCnt=0 , colprv=0;
+		/* System.out.println(r); */
+		String[] finalCol=(String[])request.getAttribute("finalCol");
+		
 		%>
 
 
 <div class="table-responsive">
-		<table style="text-align: center;">
+		<%-- <table style="text-align: center;">
 
 			<%
 				for (int m = 0; m < sequences.size(); m++) {
@@ -140,9 +166,45 @@ String colour=hs.getAttribute("colour").toString(); %>
 
 				}
 			%>
-		</table>
+		</table> --%>
 
-	</div>
+	<table style="text-align: center;">
+	
+		<%for(int k=0; k<r; k++){
+			colprv=colCnt;
+			//System.out.println(colprv);
+			for(int i=0; i<row; i++){
+			     colCnt=colprv;       %>
+			<tr>
+			<td> <%= headings.get(i).toString()%></td>
+			<td >&nbsp;</td>
+			<%	for(int j=0; j<col; j++){ %>
+			
+				<%if(colCnt<finalSeq[0].length){ %>
+				
+				<%if(finalCol[colCnt] != "transparent") {%>
+		
+				<td class="tdcolour" style="background-color: <%=finalCol[colCnt] %>"> <%=finalSeq[i][colCnt] %></td>
+				<%}
+				else {%>
+				<td style="background-color: <%=finalCol[colCnt] %>"> <%=finalSeq[i][colCnt] %></td>
+				<%}
+				} %>
+		
+		<% colCnt++;
+		}%>
+			</tr>
+		<%} %>
+		<tr>
+				<td >&nbsp;</td>
+		</tr>
+		
+		<%
+		} %>
+	
+	</table>
+
+</div>
 </body>
 <script>
 var slider = document.getElementById("myRange3");

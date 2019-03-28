@@ -3,12 +3,14 @@ package com.Model;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.servlet.http.HttpSession;
+
 public class ColourSqu {
 
-	public ArrayList<String[][]> colourDeco(ArrayList<String> heading, ArrayList<StringBuilder> sequence,
-			int rowrange) {
+	public ArrayList colourDeco(ArrayList<String> heading, ArrayList<StringBuilder> sequence,
+			int rowrange,String FirstColour,String SecondColour ) {
 
-		ArrayList<String[][]> alFinal = new ArrayList<String[][]>();
+		ArrayList alFinal = new ArrayList<>();
 
 		char[] arr=null;
 		int x = rowrange;
@@ -74,15 +76,16 @@ public class ColourSqu {
 //		System.out.println(lenth);
 
 		String[][] finalSeq = new String[sequences.size()][lenth];
-		String[][] finalCol = new String[sequences.size()][lenth];
+		//String[][] finalCol = new String[sequences.size()][lenth];
+		String[] finalCol = new String[lenth];
 		
 		for(int k=0; k<sequences.size(); k++) {
 			char[] temp = sequences.get(k).toString().replaceAll("\\s", "").toCharArray();
 			
-			for (int i = 0; i < lenth; i++) { // row
+			for (int i = 0; i < lenth; i++) { //
 				
 				finalSeq[k][i]=temp[i]+"";
-				finalCol[k][i]="transparent";
+				finalCol[i]="transparent";
 				
 
 			}
@@ -104,20 +107,37 @@ public class ColourSqu {
 //			}
 		
 		
-		for (int i = 0; i < lenth; i++) { // row
+		for (int i = 0; i < lenth; i++) { //506
 			String str=finalSeq[0][i];
+			
+			int counter=0;
 
-			for (int j = 0; j < sequences.size(); j++) { // col
+			for (int j = 0; j < sequences.size(); j++) {  //3 or 4
 
 				if(str.equals(finalSeq[j][i])) {
+					counter++;
 					
 				}
+				
+			}
+			
+			
+			if(counter==sequences.size()) {
+				finalCol[i]=FirstColour;
 			}
 
 			
 		}
 
+		
+		
+		for (int i = 0; i < lenth; i++) {
+			//System.out.println(i+finalCol[i]);
 			
+		}
+		
+		alFinal.add(finalSeq);
+		alFinal.add(finalCol);
 		
 
 		return alFinal;
