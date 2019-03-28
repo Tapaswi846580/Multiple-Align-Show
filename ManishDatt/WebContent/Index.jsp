@@ -133,6 +133,7 @@ VDDE--</textarea>
     <a href="">Manish Datt</a>
   </div>
   <!-- Copyright -->
+   <!-- Copyright -->
 
 </footer>
 

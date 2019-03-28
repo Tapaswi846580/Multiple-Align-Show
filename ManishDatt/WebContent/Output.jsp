@@ -172,7 +172,7 @@ String colour=hs.getAttribute("colour").toString(); %>
 	
 		<%for(int k=0; k<r; k++){
 			colprv=colCnt;
-			//System.out.println(colprv);
+			System.out.println(colprv);
 			for(int i=0; i<row; i++){
 			     colCnt=colprv;       %>
 			<tr>

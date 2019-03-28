@@ -80,6 +80,7 @@ public class Controller extends HttpServlet {
 			String SecondColour="#"+request.getParameter("secondcolor");
 			
 			//System.out.println(FirstColour);
+			//System.out.println(FirstColour);
 			
 			ColourSqu cs=new ColourSqu();
 			ArrayList al=cs.colourDeco(headings, sequences, rowrange,FirstColour,SecondColour);
