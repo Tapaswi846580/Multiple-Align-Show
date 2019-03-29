@@ -14,10 +14,34 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="jscolor.js"></script>
   
+  <script>
+$(function () {
+	  var isMouseDown = false,
+	    isHighlighted;
+	  $("#our_table td")
+	    .mousedown(function () {
+	      isMouseDown = true;
+	      $(this).toggleClass("highlighted");
+	      isHighlighted = $(this).hasClass("highlighted");
+	      return false; // prevent text selection
+	    })
+	    .mouseover(function () {
+	      if (isMouseDown) {
+	        $(this).toggleClass("highlighted", isHighlighted);
+	      }
+	    });
+
+	  $(document)
+	    .mouseup(function () {
+	      isMouseDown = false;
+	    });
+	});
+</script>
+  
   <style type="text/css">
   
   .tdcolour{
-  	color: #ffffff;
+  	color: #fff;
   }
   
   .divPadding{
@@ -31,6 +55,14 @@
   text-align: center;
   }
   
+  	table td {
+  text-align:center;
+  vertical-align:middle;
+}
+
+table td.highlighted {
+  background-color:#4286f4 !important;
+}
   
   </style>
 </head>
@@ -112,7 +144,7 @@ String rowfsize=request.getAttribute("rowfsize").toString();
 <div class="divPadding" >
 		
 
-	<table class="tableFormate" style="font-size:<%=rowfsize %>" >
+	<table class="tableFormate" id="our_table" style="font-size:<%=rowfsize %>" >
 	
 		<%for(int k=0; k<r; k++){
 			colprv=colCnt;
