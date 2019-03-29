@@ -20,14 +20,25 @@
   	color: #ffffff;
   }
   
+  .divPadding{
+  padding-left: 2%;
+  padding-right: 2% !important;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  }
+  
+  .tableFormate{
+  text-align: center;
+  }
+  
   
   </style>
 </head>
 <body>
 
 <%
-HttpSession hs=request.getSession();
-String colour=hs.getAttribute("colour").toString(); %>
+String rowfsize=request.getAttribute("rowfsize").toString();
+%>
 
 <div class="container-fluid">
 <div id="demo" class="collapse">
@@ -98,81 +109,14 @@ String colour=hs.getAttribute("colour").toString(); %>
 		%>
 
 
-<div class="table-responsive">
-		<%-- <table style="text-align: center;">
+<div class="divPadding" >
+		
 
-			<%
-				for (int m = 0; m < sequences.size(); m++) {
-
-					int flag = 0;
-
-					arr = sequences.get(m).toString().replaceAll("\\s", "").toCharArray();
-
-					double d = Double.parseDouble("" + arr.length) / Double.parseDouble("" + x);
-					//System.out.println(d);
-					r = (int) Math.ceil(d);
-					
-
-					char[][] a = new char[r][x];
-
-					for (int j = 0; j < r; j++) {
-						for (int k = 0; k < x; k++) {
-							if (flag < arr.length) {
-								if (!Character.isWhitespace(arr[flag])) {
-									a[j][k] = arr[flag];
-								}
-								flag++;
-							}
-						}
-					}
-
-					al.add(a);
-				}
-			%>
-
-			<%
-				for (int m = 0; m < r; m++) {
-
-					for (int n = 0; n < sequences.size(); n++) {
-
-						char[][] temp = (char[][]) al.get(n);
-			%>
-
-			<tr>
-				<td><%=headings.get(n).toString()%></td>
-				<td>&nbsp;&nbsp;</td>
-
-				<%
-					for (int z = 0; z < x; z++) {
-				%>
-				<td><%=temp[cnt][z]%></td>
-				<%
-					}
-				%>
-
-
-			</tr>
-
-
-
-			<%
-				}
-			%>
-			<tr>
-				<td style="background-color: <%=colour%>">&nbsp;</td>
-			</tr>
-			<%
-				cnt++;
-
-				}
-			%>
-		</table> --%>
-
-	<table style="text-align: center;">
+	<table class="tableFormate" style="font-size:<%=rowfsize %>" >
 	
 		<%for(int k=0; k<r; k++){
 			colprv=colCnt;
-			System.out.println(colprv);
+			//System.out.println(colprv);
 			for(int i=0; i<row; i++){
 			     colCnt=colprv;       %>
 			<tr>

@@ -129,8 +129,8 @@ VDDE--</textarea>
 	<footer class="page-footer font-small blue">
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="">Manish Datt</a>
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="">Ahmedabad University</a>
   </div>
   <!-- Copyright -->
    <!-- Copyright -->

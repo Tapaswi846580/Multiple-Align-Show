@@ -75,6 +75,7 @@ public class Controller extends HttpServlet {
 			}
 			
 			int rowrange=Integer.parseInt(request.getParameter("rowrange").toString());
+			String rowfsize=request.getParameter("rowfsize")+"px";
 			
 			String FirstColour="#"+request.getParameter("firstcolor");
 			String SecondColour="#"+request.getParameter("secondcolor");
@@ -92,6 +93,7 @@ public class Controller extends HttpServlet {
 			request.setAttribute("headings",headings);
 			request.setAttribute("sequences",finalSeq);
 			request.setAttribute("rowrange", rowrange);
+			request.setAttribute("rowfsize", rowfsize);
 			RequestDispatcher rd = request.getRequestDispatcher("Output.jsp");
 			rd.forward(request, response);
 			
