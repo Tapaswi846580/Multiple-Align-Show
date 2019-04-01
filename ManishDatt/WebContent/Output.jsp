@@ -132,7 +132,7 @@ table td {
 
 td.highlighted {
 	<%String c = "#4286f4";%>
-	background-color: <%=request.getParameter("chosen-value2")%> !important;
+	background-color: <%=c%> !important;
 	color: #fff !important;
 	
 }
@@ -173,15 +173,10 @@ td.highlighted {
 							class="jscolor{valueElement:'chosen-value1',value:'D3D3D3'}"
 							style="width: 60px; height: 10px; border-radius: 10px; padding: 9px;">
 					</p>
+					<input type="hidden" />
 					<input type="hidden" id="chosen-value" name="firstcolor"> <input
 						type="hidden" id="chosen-value1" name="secondcolor">
-					<!--<div class="slidecontainer">
-  					<p>Percentage of sequences that must agree for identity or similarity coloring to be added:  
-  					<input type="range" min="10" max="100" value="50" step="10" class="slider" id="myRange5">
-  					<output id="demo5" class="out"></output> </p>
-					</div>
-					 <p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
-					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p> -->
+					
 					<p>
 						Select Custom Color <input type="button"
 							class="jscolor{valueElement:'chosen-value2',value:'000'}"
