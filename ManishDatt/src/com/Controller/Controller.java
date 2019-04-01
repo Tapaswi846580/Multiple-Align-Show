@@ -46,8 +46,8 @@ public class Controller extends HttpServlet {
 	
 	protected void requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession hs=request.getSession();
-		hs.setAttribute("colour", "#42dff4");
+		/*HttpSession hs=request.getSession();
+		hs.setAttribute("colour", "#42dff4");*/
 		
 		try{
 			String data = request.getParameter("txtData");

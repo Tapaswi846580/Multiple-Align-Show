@@ -21,7 +21,40 @@
 		
 	});
   </script>
-  
+  <style type="text/css">
+ .btnsubmit{
+		margin-top:20px;
+	  background-color: white;
+	  border: none;
+	  color: Green;
+	  padding: 5px 10px;
+	  font-size: 16px;
+	  cursor: pointer;
+	  border:1px solid; 
+	}
+
+
+	.btnsubmit:hover {
+	  background-color: green;
+	  color:white;
+	} 
+	.btnclear {
+	margin-top:20px;
+  background-color: white;
+  border: none;
+  color: red;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border:1px solid; 
+}
+
+
+.btnclear:hover {
+  background-color: red;
+  color:white;
+} 
+ </style>
  
 </head>
 
@@ -80,9 +113,9 @@ ISNQAETCQRDIEVGDYLVILACDGISDVFNTSDLYNLVQAYVNENPVEE
 YNDLAHYICHEAIAHGSTDNVTVVIGFLRPPQDLWRMMKIDEESDEEEDE
 VDDE--</textarea>
     		<div class="col-md-12 text-center"> 
-    			<button class="btn"><i class="fa fa-check"></i>SUBMIT</button>
+    			<button class="btnsubmit"><i class="fa fa-check"></i>SUBMIT</button>
     			
-    			<button class="btn" type="button"  onclick="document.getElementById('Data').value=''"><i class="fa fa-eraser"></i>CLEAR</button>
+    			<button class="btnclear" type="button"  onclick="document.getElementById('Data').value=''"><i class="fa fa-eraser"></i>CLEAR</button>
     		</div>
     		
 </div>	
@@ -105,19 +138,15 @@ VDDE--</textarea>
   					<output id="demo1" class="out"></output> </p>
 			</div>
 					<p>Choose the colors you wish to use for highlighting. Identical amino acids have the highest priority for coloring, followed by similar amino acids. </p>
-					<p>Color identical amino acids <input type="button" id="colourPicker1" class="jscolor{valueElement:'chosen-value'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;" >
-					and similar amino acids <input type="button" class="jscolor{valueElement:'chosen-value'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
+					<p>Color identical amino acids <input type="button" id="colourPicker1" class="jscolor{valueElement:'chosen-value',value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;" >
+					and similar amino acids <input type="button" class="jscolor{valueElement:'chosen-value1',value:'D3D3D3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
 					<input type="hidden" id="chosen-value" name="firstcolor">
-					<input type="hidden" id="chosen-value" name="secondcolor">
-					<!--<div class="slidecontainer">
-  					<p>Percentage of sequences that must agree for identity or similarity coloring to be added:  
-  					<input type="range" min="10" max="100" value="50" step="10" class="slider" id="myRange2">
-  					<output id="demo2" class="out"></output> </p>
-					</div>
-					 <p>The color used if no identity or similarity coloring is added  <input type="button" class="jscolor{valueElement:null,value:'000000'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p>
-					<p>The color of all gaps: <input type="button" class="jscolor{valueElement:null,value:'d3d3d3'}" style="width:60px; height:10px;border-radius: 10px;padding:9px;"></p> -->
-					
-			</p>
+					<input type="hidden" id="chosen-value1" name="secondcolor">
+					<p>Enter the groups of similar amino acids separated by commas</p>
+					<center><input type="text" size="30" style="border: 1px solid;border-radius: 5px;text-align:center;" value="ILV,FWY,KRH,DE,GAS,P,C,TNQM"></center>
+       </p>
+       		
+			
 	</div>
 </div>
 </div>
