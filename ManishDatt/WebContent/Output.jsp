@@ -24,13 +24,21 @@
 	$(function() {
 		var isMouseDown = false, isHighlighted;
 		$("#our_table td").mousedown(function() {
+			
 			isMouseDown = true;
 			$(this).toggleClass("highlighted");
 			isHighlighted = $(this).hasClass("highlighted");
 			return false; // prevent text selection
 		}).mouseover(function() {
 			if (isMouseDown) {
-				$(this).toggleClass("highlighted", isHighlighted);
+				
+				
+				var color = "#"+$("#chosen-value2").val();
+				
+				$(this).css("background-color", color);
+				//$(this).css("color", "#fff");
+				//$(this).toggleClass("highlighted", isHighlighted);
+				
 			}
 		});
 
@@ -38,21 +46,36 @@
 			isMouseDown = false;
 		});
 	});
-
-	$(document).ready(function() {
+	
+	 $(document).ready(function() {
 		var name="tapaswi";
 		$("#btnReset").click(function() {
-			$("#our_table td").toggleClass("highlighted", false);
+			 location.reload();
 		});
-		$("#chosen-value2").change(function() {
-			var color = "#"+$("#chosen-value2").val();
-			$(".highlighted").css("background-color",""+color+"");
-		});
-	});
+		 $("#chosen-value").change(function() {
+			var color = "#"+$("#chosen-value").val();
+			
+			//alert(color);
+		$(".tdcolour").css('background-color',color);
+		}); 
+		 
+		 $("#myRange4").change(function() {
+				var font = $("#myRange4").val() + "px";
+				
+				//alert(font);
+			$(".tableFormate").css('fontSize',font);
+			}); 
+	}); 
 </script>
 
 
 <style type="text/css">
+
+.highlighted {
+/* background-color: #4286f4 !important;
+color: #fff !important;  */
+
+}
 
 /*  .table td, .table th {
     padding: 0 !important;
@@ -130,12 +153,11 @@ table td {
 	vertical-align: middle;
 }
 
-td.highlighted {
-	<%String c = "#4286f4";%>
-	background-color: <%=c%> !important;
-	color: #fff !important;
-	
-}
+
+
+
+
+
 </style>
 
 </head>
@@ -174,14 +196,14 @@ td.highlighted {
 							style="width: 60px; height: 10px; border-radius: 10px; padding: 9px;">
 					</p>
 					<input type="hidden" />
-					<input type="hidden" id="chosen-value" name="firstcolor"> <input
-						type="hidden" id="chosen-value1" name="secondcolor">
+					<input type="hidden" id="chosen-value" name="firstcolor"> 
+					<input type="hidden" id="chosen-value1" name="secondcolor">
 					
 					<p>
 						Select Custom Color <input type="button"
-							class="jscolor{valueElement:'chosen-value2',value:'000'}"
+							class="jscolor{valueElement:'chosen-value2',value:'#ffff23'}"
 							style="width: 60px; height: 10px; border-radius: 10px; padding: 9px;">
-							<input type="hidden" id="chosen-value2" value="000" name="customcolor">
+							<input type="hidden" id="chosen-value2" value="#ffff23" name="customcolor">
 					</p>
 					<p>Enter the groups of similar amino acids separated by commas</p>
 					<center>
@@ -204,7 +226,7 @@ td.highlighted {
 			<i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
 		</button>
 		<button class="btnclear" id="btnReset">
-			<i class="fa fa-eraser"></i>Clear Selection
+			<i class="fa fa-eraser"></i>Reset
 		</button>
 	</div>
 
