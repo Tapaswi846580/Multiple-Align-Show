@@ -82,13 +82,14 @@ public class Controller extends HttpServlet {
 			
 			//System.out.println(FirstColour);
 			//System.out.println(FirstColour);
-			
+			String groups = request.getParameter("txtGroup");
 			ColourSqu cs=new ColourSqu();
-			ArrayList al=cs.colourDeco(headings, sequences, rowrange,FirstColour,SecondColour);
+			ArrayList al=cs.colourDeco(headings, sequences, rowrange,FirstColour,SecondColour,groups);
 			String[][] finalSeq=(String[][]) al.get(0);
 			String[] finalCol=(String[]) al.get(1);
+			String[] finalColColourNo=(String[]) al.get(2);
 			
-			
+			request.setAttribute("finalColColourNo", finalColColourNo);
 			request.setAttribute("finalCol",finalCol);
 			request.setAttribute("headings",headings);
 			request.setAttribute("sequences",finalSeq);

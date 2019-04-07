@@ -19,7 +19,93 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="jscolor.js"></script>
+<!-- <script type="text/javascript" src="jspdf.debug.js"></script> -->
+<script type="text/javascript" src="jspdf.min.js"></script>
 
+<script type="text/javascript" src="html2canvas.min.js"></script>
+<script type="text/javascript" src="canvas2image.js"></script>
+		
+
+<script type="text/javascript">
+		
+function capture(){
+	html2canvas(document.querySelector('.specific'), {
+			onrendered: function(canvas) {
+				alert('Image Saved');
+				return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
+}
+
+function pdf(){
+	html2canvas(document.getElementById('our_table'), {
+			onrendered: function(canvas) {
+				alert('av che');
+				var img = canvas.toDataURL("image/png");
+				var doc = new jsPDF();
+				doc.addImage(img,'JPEG',20,20);
+				doc.save('test.pdf');
+			}
+		});
+}
+		/* function genPDF()
+		{
+			
+			 html2canvas(document.getElementById('our_table'),{
+			 onrendered:function(canvas){
+			
+			 var img=canvas.toDataURL("image/png");
+			 var doc = new jsPDF();
+			 doc.addImage(img,'JPEG',20,20);
+			 doc.save('test.pdf');
+			 }
+			
+			 });
+		
+		} */
+			
+        /* function demoFromHTML() {
+            /* var pdf = new jsPDF('p', 'pt', 'letter');
+            // source can be HTML-formatted string, or a reference
+            // to an actual DOM element from which the text will be scraped.
+            source = document.getElementById('our_table');
+
+            // we support special element handlers. Register them with jQuery-style 
+            // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+            // There is no support for any other type of selectors 
+            // (class, of compound) at this time.
+            specialElementHandlers = {
+                // element with id of "bypass" - jQuery style selector
+                '#bypassme': function(element, renderer) {
+                    // true = "handled elsewhere, bypass text extraction"
+                    return true
+                }
+            };
+            margins = {
+                top: 80,
+                bottom: 60,
+                left: 40,
+                width: 522
+            };
+            // all coords and widths are in jsPDF instance's declared units
+            // 'inches' in this case
+            pdf.fromHTML(
+                    source, // HTML string or DOM elem ref.
+                    margins.left, // x coord
+                    margins.top, {// y coord
+                        'width': margins.width, // max width of content on PDF
+                        'elementHandlers': specialElementHandlers
+                    },
+            function(dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                pdf.save('Sequence.pdf');
+            }
+            , margins);
+        	
+        }  */
+        
+    </script>
 <script>
 	$(function() {
 		var isMouseDown = false, isHighlighted;
@@ -48,7 +134,7 @@
 	});
 	
 	 $(document).ready(function() {
-		var name="tapaswi";
+		
 		$("#btnReset").click(function() {
 			 location.reload();
 		});
@@ -59,15 +145,27 @@
 		$(".tdcolour").css('background-color',color);
 		}); 
 		 
+		 $("#chosen-value1").change(function() {
+				var color = "#"+$("#chosen-value1").val();
+				
+				//alert(color);
+			$(".tdcolour1").css('background-color',color);
+			}); 
+		 
+		 
 		 $("#myRange4").change(function() {
 				var font = $("#myRange4").val() + "px";
 				
 				//alert(font);
 			$(".tableFormate").css('fontSize',font);
-			}); 
+		}); 
+		 
 	}); 
 </script>
 
+<script>
+
+</script>
 
 <style type="text/css">
 
@@ -83,6 +181,10 @@ color: #fff !important;  */
     border-top: 0px !important;
 } */
 .tdcolour {
+	color: #ffffff;
+}
+
+.tdcolour1 {
 	color: #ffffff;
 }
 
@@ -159,7 +261,7 @@ table td {
 
 
 </style>
-
+<title>Output</title>
 </head>
 <body>
 
@@ -171,14 +273,14 @@ table td {
 			<div class="card2">
 				<div class="card-body">
 					<p class="card-text">
-					<div class="slidecontainer">
+					<!-- <div class="slidecontainer">
 						<p>
 							Show residues per line <input type="range" min="10" max="100"
 								value="50" name="rowrange" step="10" class="slider"
 								id="myRange3">
 							<output id="demo3" class="out"></output>
 						</p>
-					</div>
+					</div> -->
 					<div class="slidecontainer">
 						<p>
 							Select Font Size: <input type="range" min="8" max="72" value="16"
@@ -205,17 +307,17 @@ table td {
 							style="width: 60px; height: 10px; border-radius: 10px; padding: 9px;">
 							<input type="hidden" id="chosen-value2" value="#ffff23" name="customcolor">
 					</p>
-					<p>Enter the groups of similar amino acids separated by commas</p>
+					<!-- <p>Enter the groups of similar amino acids separated by commas</p>
 					<center>
 						<input type="text" size="30"
 							style="border: 1px solid; border-radius: 5px; text-align: center;"
 							value="ILV,FWY,KRH,DE,GAS,P,C,TNQM">
-					</center>
-					<div class="d-flex justify-content-center">
+					</center> -->
+					<!-- <div class="d-flex justify-content-center">
 						<button class="btnsubmit">
 							<i class="fa fa-check"></i>Apply
 						</button>
-					</div>
+					</div> -->
 
 					</p>
 				</div>
@@ -248,7 +350,6 @@ table td {
 	%>
 
 	<%
-		System.out.println("Val: "+request.getParameter("chosen-value2"));
 		ArrayList<String> headings = (ArrayList<String>) request.getAttribute("headings");
 		String[][] finalSeq = (String[][]) request.getAttribute("sequences");
 		int rowrange = Integer.parseInt(request.getAttribute("rowrange").toString());
@@ -262,10 +363,14 @@ table td {
 		int colCnt = 0, colprv = 0;
 		/* System.out.println(r); */
 		String[] finalCol = (String[]) request.getAttribute("finalCol");
+		String[] finalColColourNo=(String[]) request.getAttribute("finalColColourNo");
 	%>
 
-
-	<div class="divPadding">
+	<button type="button" onclick="capture()">Save as PNG</button>
+	<button type="button" onclick="pdf()">Save as PDF</button>
+	
+	<div id="div1" class="divPadding specific">
+	
 		<!-- <button id="btnReset">Clear Selection</button> -->
 
 
@@ -275,6 +380,7 @@ table td {
 			border="0" cellspacing="0" cellpadding="1">
 
 			<%
+				int[] cntArray = new int[headings.size()];
 				for (int k = 0; k < r; k++) {
 					colprv = colCnt;
 					//System.out.println(colprv);
@@ -290,14 +396,25 @@ table td {
 
 				<%
 					if (colCnt < finalSeq[0].length) {
+						if(!finalSeq[i][colCnt].equals("-")){
+							cntArray[i]++;
+						}
 				%>
 
 				<%
 					if (finalCol[colCnt] != "transparent") {
 				%>
+				
+				<%if(finalColColourNo[colCnt]=="1"){ %>
 
 				<td class="tdcolour"
 					style="background-color: <%=finalCol[colCnt]%>"><%=finalSeq[i][colCnt]%></td>
+					
+				<%}
+				else if(finalColColourNo[colCnt]=="2"){%>	
+				<td class="tdcolour1"
+					style="background-color: <%=finalCol[colCnt]%>"><%=finalSeq[i][colCnt]%></td>
+				<%} %>
 				<%
 					} else {
 				%>
@@ -311,6 +428,7 @@ table td {
 					colCnt++;
 							}
 				%>
+				<td><%="&nbsp;&nbsp;"+cntArray[i] %></td>
 			</tr>
 			<%
 				}
@@ -326,17 +444,18 @@ table td {
 		</table>
 
 	</div>
+	
 </body>
 
 
 <script>
-	var slider = document.getElementById("myRange3");
+	/* var slider = document.getElementById("myRange3");
 	var output = document.getElementById("demo3");
 	output.innerHTML = slider.value;
 
 	slider.oninput = function() {
 		output.innerHTML = this.value;
-	}
+	} */
 
 	var slider1 = document.getElementById("myRange4");
 	var output1 = document.getElementById("demo4");

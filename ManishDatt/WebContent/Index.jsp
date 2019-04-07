@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Multiple Align Show</title>
+	<title>Index</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -143,7 +143,7 @@ VDDE--</textarea>
 					<input type="hidden" id="chosen-value" name="firstcolor">
 					<input type="hidden" id="chosen-value1" name="secondcolor">
 					<p>Enter the groups of similar amino acids separated by commas</p>
-					<center><input type="text" size="30" style="border: 1px solid;border-radius: 5px;text-align:center;" value="ILV,FWY,KRH,DE,GAS,P,C,TNQM"></center>
+					<center><input type="text" size="30" name="txtGroup" style="border: 1px solid;border-radius: 5px;text-align:center;" value="ILV,FWY,KRH,DE,GAS,P,C,TNQM"></center>
        </p>
        		
 			

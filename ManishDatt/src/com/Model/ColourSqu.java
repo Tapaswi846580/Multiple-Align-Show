@@ -8,10 +8,11 @@ import javax.servlet.http.HttpSession;
 public class ColourSqu {
 
 	public ArrayList colourDeco(ArrayList<String> heading, ArrayList<StringBuilder> sequence,
-			int rowrange,String FirstColour,String SecondColour ) {
+			int rowrange,String FirstColour,String SecondColour, String groups ) {
 
 		ArrayList alFinal = new ArrayList<>();
-
+		String[] groupArray = groups.split(",");
+		
 		char[] arr=null;
 		int x = rowrange;
 		int r = 0;
@@ -78,6 +79,7 @@ public class ColourSqu {
 		String[][] finalSeq = new String[sequences.size()][lenth];
 		//String[][] finalCol = new String[sequences.size()][lenth];
 		String[] finalCol = new String[lenth];
+		String[] finalColColourNo = new String[lenth];
 		
 		for(int k=0; k<sequences.size(); k++) {
 			char[] temp = sequences.get(k).toString().replaceAll("\\s", "").toCharArray();
@@ -86,6 +88,7 @@ public class ColourSqu {
 				
 				finalSeq[k][i]=temp[i]+"";
 				finalCol[i]="transparent";
+				finalColColourNo[i]="0";
 				
 
 			}
@@ -112,33 +115,41 @@ public class ColourSqu {
 			String str=finalSeq[0][i];
 			
 			int counter=0;
+			int counter1=0;
 
 			for (int j = 0; j < sequences.size(); j++) {  //3 or 4
 
 				if(str.equals(finalSeq[j][i])) {
-					counter++;
-					
-				}
+					counter++;	
+				}	
 				
 			}
-			
-			
+			for(int k = 0; k < groupArray.length; k++){
+				for (int j = 0; j < sequences.size(); j++) {  //3 or 4
+
+					if(groupArray[k].contains(finalSeq[j][i])){
+						counter1++;
+					}	
+					if(counter1 == sequences.size()){
+						finalCol[i] = SecondColour;
+						finalColColourNo[i]="2";
+					}
+				}
+				counter1=0;
+				
+			}
 			if(counter==sequences.size()) {
 				finalCol[i]=FirstColour;
+				finalColColourNo[i]="1";
 			}
-
 			
 		}
 
-		
-		
-		for (int i = 0; i < lenth; i++) {
-			//System.out.println(i+finalCol[i]);
-			
-		}
+
 		
 		alFinal.add(finalSeq);
 		alFinal.add(finalCol);
+		alFinal.add(finalColColourNo);
 		
 
 		return alFinal;
