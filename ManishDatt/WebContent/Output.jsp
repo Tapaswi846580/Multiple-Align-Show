@@ -31,7 +31,6 @@
 function capture(){
 	html2canvas(document.querySelector('.specific'), {
 			onrendered: function(canvas) {
-				alert('Image Saved');
 				return Canvas2Image.saveAsPNG(canvas);
 			}
 		});
@@ -367,7 +366,10 @@ table td {
 	%>
 
 	<button type="button" onclick="capture()">Save as PNG</button>
-	<button type="button" onclick="pdf()">Save as PDF</button>
+	<!-- <form method="post" action="GeneratePDF">
+		<button type="submit" >Save as PDF</button>
+	</form> -->
+	
 	
 	<div id="div1" class="divPadding specific">
 	
@@ -375,7 +377,7 @@ table td {
 
 
 		<table class="tableFormate" id="our_table"
-			style="font-size:<%=rowfsize%>"
+			style="font-size:<%=rowfsize%>; background-color:#ffffff;"
 			summary="Table selection with plugin" id="tablecellsselection"
 			border="0" cellspacing="0" cellpadding="1">
 
