@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+//import javax.websocket.Session;
 
 import com.Model.ColourSqu;
 
@@ -32,7 +32,11 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("Index.jsp");
+//		HttpSession hs=request.getSession();
+//		
+//		request.setAttribute("error", true);
+		RequestDispatcher rd=request.getRequestDispatcher("Index.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -45,11 +49,15 @@ public class Controller extends HttpServlet {
 	
 	protected void requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*HttpSession hs=request.getSession();
-		hs.setAttribute("colour", "#42dff4");*/
+		HttpSession hs=request.getSession();
+		
 		
 		try{
-			String data = request.getParameter("txtData");
+			String[] chk=request.getParameterValues("chk");
+			
+		
+			
+			String data = hs.getAttribute("data").toString();
 			String[] splittedData = data.split("\n");
 			ArrayList<String> headings = new ArrayList<>();
 			StringBuilder sequence = new StringBuilder();
@@ -73,24 +81,46 @@ public class Controller extends HttpServlet {
 			
 			}
 			
-			int rowrange=Integer.parseInt(request.getParameter("rowrange").toString());
-			String rowfsize=request.getParameter("rowfsize")+"px";
+			ArrayList<String> headingsFinal = new ArrayList<>();
+			ArrayList<StringBuilder> sequencesFinal = new ArrayList<>();
 			
-			String FirstColour="#"+request.getParameter("firstcolor");
-			String SecondColour="#"+request.getParameter("secondcolor");
+			for(String str:chk) {
+				int i=Integer.parseInt(str);
+				System.out.println(i);
+				headingsFinal.add(headings.get(i));
+				sequencesFinal.add(sequences.get(i));
+			}
+			
+			
+			
+			
+//			for(int i=0;i<headings.size();i++) {
+//				
+//				if(headings.get(i) != chk[i]) {
+//					headings.remove(i);
+//					sequences.remove(i);
+//				}
+//			}
+			
+			
+			int rowrange=Integer.parseInt(hs.getAttribute("rowrange").toString());
+			String rowfsize=hs.getAttribute("rowfsize").toString();
+			
+			String FirstColour=hs.getAttribute("FirstColour").toString();
+			String SecondColour=hs.getAttribute("SecondColour").toString();
 			
 			//System.out.println(FirstColour);
 			//System.out.println(FirstColour);
-			String groups = request.getParameter("txtGroup");
+			String groups = hs.getAttribute("groups").toString();
 			ColourSqu cs=new ColourSqu();
-			ArrayList al=cs.colourDeco(headings, sequences, rowrange,FirstColour,SecondColour,groups);
+			ArrayList al=cs.colourDeco(headingsFinal, sequencesFinal, rowrange,FirstColour,SecondColour,groups);
 			String[][] finalSeq=(String[][]) al.get(0);
 			String[] finalCol=(String[]) al.get(1);
 			String[] finalColColourNo=(String[]) al.get(2);
 			
 			request.setAttribute("finalColColourNo", finalColColourNo);
 			request.setAttribute("finalCol",finalCol);
-			request.setAttribute("headings",headings);
+			request.setAttribute("headings",headingsFinal);
 			request.setAttribute("sequences",finalSeq);
 			request.setAttribute("rowrange", rowrange);
 			request.setAttribute("rowfsize", rowfsize);
